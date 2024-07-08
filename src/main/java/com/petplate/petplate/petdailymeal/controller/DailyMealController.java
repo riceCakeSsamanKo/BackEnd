@@ -37,11 +37,11 @@ public class DailyMealController {
     })
     @GetMapping("/pet/{petId}/dailyMeals")
     public ResponseEntity<BaseResponse<List<ReadDailyMealResponseDto>>> readDailyMealsWithAllDailyFoods(@CurrentUserUsername String username, @PathVariable("petId") Long petId,
-                                                                                       @RequestParam(required = false) @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate date) {
+                                                                                                        @RequestParam(required = false) @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate date) {
         if (date == null) {
             List<ReadDailyMealResponseDto> dailyMealsWithFoods = dailyMealService.getDailyMealsWithAllFoods(username, petId);
             return new ResponseEntity(BaseResponse.createSuccess(dailyMealsWithFoods), HttpStatus.OK);
-        } else{
+        } else {
             ReadDailyMealResponseDto dailyMealWithFoods = dailyMealService.getDailyMealWithAllFoods(username, petId, date);
             return new ResponseEntity(BaseResponse.createSuccess(dailyMealWithFoods), HttpStatus.OK);
         }
@@ -55,9 +55,9 @@ public class DailyMealController {
     })
     @GetMapping("/pet/{petId}/dailyMeals/raws")
     public ResponseEntity<BaseResponse<List<ReadDailyMealResponseDto>>> readDailyMealsWithDailyRaws(@CurrentUserUsername String username, @PathVariable("petId") Long petId,
-                                                                                       @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate date) {
-            ReadDailyMealResponseDto dailyMealWithFoods = dailyMealService.getDailyMealWithDailyRaws(username, petId, date);
-            return new ResponseEntity(BaseResponse.createSuccess(dailyMealWithFoods), HttpStatus.OK);
+                                                                                                    @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate date) {
+        ReadDailyMealResponseDto dailyMealWithFoods = dailyMealService.getDailyMealWithDailyRaws(username, petId, date);
+        return new ResponseEntity(BaseResponse.createSuccess(dailyMealWithFoods), HttpStatus.OK);
     }
 
     @Operation(summary = "반려견의 식사 내역 중 사료만 조회", description = "특정일자의 식사 내역 중 사료(dailyFeeds)만 조회합니다. (나머진 null)")
@@ -68,9 +68,9 @@ public class DailyMealController {
     })
     @GetMapping("/pet/{petId}/dailyMeals/feeds")
     public ResponseEntity<BaseResponse<List<ReadDailyMealResponseDto>>> readDailyMealsWithDailyFeeds(@CurrentUserUsername String username, @PathVariable("petId") Long petId,
-                                                                                       @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate date) {
-            ReadDailyMealResponseDto dailyMealWithFoods = dailyMealService.getDailyMealWithDailyFeeds(username, petId, date);
-            return new ResponseEntity(BaseResponse.createSuccess(dailyMealWithFoods), HttpStatus.OK);
+                                                                                                     @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate date) {
+        ReadDailyMealResponseDto dailyMealWithFoods = dailyMealService.getDailyMealWithDailyFeeds(username, petId, date);
+        return new ResponseEntity(BaseResponse.createSuccess(dailyMealWithFoods), HttpStatus.OK);
     }
 
     @Operation(summary = "반려견의 식사 내역 중 포장 간식만 조회", description = "특정일자의 식사 내역 중 포장 간식(dailyPackagedSnacks)만 조회합니다. (나머진 null)")
@@ -81,9 +81,9 @@ public class DailyMealController {
     })
     @GetMapping("/pet/{petId}/dailyMeals/packagedSnacks")
     public ResponseEntity<BaseResponse<List<ReadDailyMealResponseDto>>> readDailyMealsWithDailyPackagedSnacks(@CurrentUserUsername String username, @PathVariable("petId") Long petId,
-                                                                                       @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate date) {
-            ReadDailyMealResponseDto dailyMealWithFoods = dailyMealService.getDailyMealWithDailyPackagedSnacks(username, petId, date);
-            return new ResponseEntity(BaseResponse.createSuccess(dailyMealWithFoods), HttpStatus.OK);
+                                                                                                              @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate date) {
+        ReadDailyMealResponseDto dailyMealWithFoods = dailyMealService.getDailyMealWithDailyPackagedSnacks(username, petId, date);
+        return new ResponseEntity(BaseResponse.createSuccess(dailyMealWithFoods), HttpStatus.OK);
     }
 
     @Operation(summary = "반려견의 식사 내역 중 즐겨찾기 자연식만 조회", description = "특정일자의 식사 내역 중 즐겨찾기 자연식(dailyBookMarkedRaws)만 조회합니다. (나머진 null)")
@@ -94,9 +94,9 @@ public class DailyMealController {
     })
     @GetMapping("/pet/{petId}/dailyMeals/bookmark/raws")
     public ResponseEntity<BaseResponse<List<ReadDailyMealResponseDto>>> readDailyMealsWithDailyBookMarkedRaws(@CurrentUserUsername String username, @PathVariable("petId") Long petId,
-                                                                                       @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate date) {
-            ReadDailyMealResponseDto dailyMealWithFoods = dailyMealService.getDailyMealWithDailyBookMarkedRaws(username, petId, date);
-            return new ResponseEntity(BaseResponse.createSuccess(dailyMealWithFoods), HttpStatus.OK);
+                                                                                                              @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate date) {
+        ReadDailyMealResponseDto dailyMealWithFoods = dailyMealService.getDailyMealWithDailyBookMarkedRaws(username, petId, date);
+        return new ResponseEntity(BaseResponse.createSuccess(dailyMealWithFoods), HttpStatus.OK);
     }
 
     @Operation(summary = "반려견의 식사 내역 중 즐겨찾기 사료만 조회", description = "특정일자의 식사 내역 중 즐겨찾기 사료(dailyBookMarkedFeeds)만 조회합니다. (나머진 null)")
@@ -107,9 +107,9 @@ public class DailyMealController {
     })
     @GetMapping("/pet/{petId}/dailyMeals/bookmark/feeds")
     public ResponseEntity<BaseResponse<List<ReadDailyMealResponseDto>>> readDailyMealsWithDailyBookMarkedFeeds(@CurrentUserUsername String username, @PathVariable("petId") Long petId,
-                                                                                       @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate date) {
-            ReadDailyMealResponseDto dailyMealWithFoods = dailyMealService.getDailyMealWithDailyBookMarkedFeeds(username, petId, date);
-            return new ResponseEntity(BaseResponse.createSuccess(dailyMealWithFoods), HttpStatus.OK);
+                                                                                                               @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate date) {
+        ReadDailyMealResponseDto dailyMealWithFoods = dailyMealService.getDailyMealWithDailyBookMarkedFeeds(username, petId, date);
+        return new ResponseEntity(BaseResponse.createSuccess(dailyMealWithFoods), HttpStatus.OK);
     }
 
     @Operation(summary = "반려견의 식사 내역 중 즐겨찾기 포장간식만 조회", description = "특정일자의 식사 내역 중 즐겨찾기 포장간식(dailyBookMarkedPackagedSnacks)만 조회합니다. (나머진 null)")
@@ -120,9 +120,9 @@ public class DailyMealController {
     })
     @GetMapping("/pet/{petId}/dailyMeals/bookmark/packagedSnacks")
     public ResponseEntity<BaseResponse<List<ReadDailyMealResponseDto>>> readDailyMealsWithDailyBookMarkedPackagedSnacks(@CurrentUserUsername String username, @PathVariable("petId") Long petId,
-                                                                                       @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate date) {
-            ReadDailyMealResponseDto dailyMealWithFoods = dailyMealService.getDailyMealWithDailyBookMarkedPackagedSnacks(username, petId, date);
-            return new ResponseEntity(BaseResponse.createSuccess(dailyMealWithFoods), HttpStatus.OK);
+                                                                                                                        @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate date) {
+        ReadDailyMealResponseDto dailyMealWithFoods = dailyMealService.getDailyMealWithDailyBookMarkedPackagedSnacks(username, petId, date);
+        return new ResponseEntity(BaseResponse.createSuccess(dailyMealWithFoods), HttpStatus.OK);
     }
 
 }
